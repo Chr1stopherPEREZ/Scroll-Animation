@@ -1,0 +1,305 @@
+@import url("https://cdn.jsdelivr.net/npm/lucide-static@0.69.0/font/lucide.css");
+
+/* ************* */
+/* STYLE GLOBALE */
+/* ************* */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-family: "Montserrat", sans-serif;
+  background-color: rgb(14, 24, 36);
+  overflow-x: hidden;
+}
+
+body a {
+  color: rgb(14, 24, 36);
+  text-decoration: none;
+}
+
+body a:hover {
+  opacity: 0.5;
+}
+
+body .container,
+body .article,
+body .navbar {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* ********* */
+/* ROTATING */
+/* ********* */
+
+body .container {
+  background-color: rgb(250, 250, 250);
+  transform-origin: top left;
+  transition: transform 0.5s linear;
+  width: 100vw;
+  min-height: 100vh;
+  padding: 2em;
+}
+
+body .container.show-navbar {
+  transform: rotate(-20deg);
+}
+
+body .container .circle-container {
+  position: fixed;
+  top: -100px;
+  left: -100px;
+  z-index: 2;
+}
+
+body .container .circle-container .circle {
+  background-color: rgb(14, 24, 36);
+  height: 200px;
+  width: 200px;
+  border-radius: 50%;
+  transition: transform 0.5s linear;
+}
+
+body .container.show-navbar .circle {
+  transform: rotate(-70deg);
+}
+
+body .container .circle-container .circle button {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  height: 100px;
+  background: transparent;
+  border: 0;
+  font-size: 26px;
+  color: rgb(250, 250, 250);
+}
+
+body .container .circle-container .circle button:focus {
+  outline: none;
+}
+
+body .container .circle-container .circle button#open {
+  left: 60%;
+}
+
+body .container .circle-container .circle button#close {
+  top: 60%;
+  transform: rotate(90deg);
+  transform-origin: top left;
+}
+
+body .container.show-navbar + nav li {
+  transform: translateX(0);
+  transition-delay: 0.3s;
+}
+
+/* *************** */
+/* NAVBAR & FOOTER */
+/* *************** */
+
+body .navbar {
+  position: fixed;
+  bottom: 40px;
+  left: 0;
+  z-index: 100;
+}
+
+body .navbar ul {
+  list-style-type: none;
+  padding-left: 30px;
+}
+
+body .navbar ul li {
+  text-transform: uppercase;
+  color: rgb(250, 250, 250);
+  margin: 40px 0;
+  transform: translateX(-100%);
+  transition: transform 0.4s ease-in;
+}
+
+body .navbar ul li + li {
+  margin-left: 15px;
+  transform: translateX(-150%);
+}
+
+body .navbar ul li + li + li {
+  margin-left: 30px;
+  transform: translateX(-200%);
+}
+
+body .navbar a {
+  color: rgb(250, 250, 250);
+  text-decoration: none;
+  transition: all 0.5s;
+}
+
+body .navbar a:hover {
+  color: rgb(252, 254, 242);
+  text-shadow: 0 0 5px rgba(241, 226, 111);
+}
+
+body .footer .final-line {
+  display: flex;
+  justify-content: center;
+}
+
+/* ******* */
+/* ARTICLE */
+/* ******* */
+
+body .article {
+  margin: 50px auto;
+  z-index: 1;
+}
+
+body .article .title {
+  display: flex;
+  justify-content: center;
+  color: rgb(14, 24, 36);
+  margin-bottom: 20px;
+}
+
+body .article span {
+  color: rgb(14, 24, 36);
+  font-style: italic;
+  font-size: 10px;
+}
+
+body .article p {
+  line-height: 1.5;
+  text-align: justify;
+}
+
+body .article .subtitle {
+  color: rgb(14, 24, 36);
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+body .article img {
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+  height: auto;
+}
+
+/* ****** */
+/* SEARCH */
+/* ****** */
+
+body .navbar .search .input {
+  background-color: rgb(14, 24, 36);
+  color: rgb(250, 250, 250);
+  border: 0;
+  font-size: 16px;
+  padding: 15px;
+  height: 50px;
+  width: 50px;
+  transition: width 0.3s ease;
+}
+
+body .navbar .search .btn {
+  background-color: rgb(14, 24, 36);
+  color: rgb(250, 250, 250);
+  border: 0;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 50px;
+  width: 50px;
+  transition: transform 0.3s ease;
+}
+
+body .navbar .search .btn:focus,
+body .navbar .search .input:focus {
+  outline: none;
+}
+
+body .navbar .search.active .input {
+  width: 200px;
+}
+
+body .navbar .search.active .btn {
+  transform: translateX(140px);
+}
+
+/* ******* */
+/* LOADING */
+/* ******* */
+
+body .loading {
+  background: url("/src/assets/images/umbreon.gif") no-repeat center
+    center/cover;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 100px;
+  height: 100px;
+  transform: translate(-50%, -50%);
+  z-index: 999;
+  filter: blur(30px);
+  transition: filter 0.3s ease;
+}
+
+body .loading-text {
+  font-size: 50px;
+  color: rgb(250, 250, 250);
+  z-index: 1000;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+body .hidden {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+/* **************** */
+/* SCROLL ANIMATION */
+/* **************** */
+
+body .text-content,
+body .image-content {
+  opacity: 0;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+/* Par défaut, le texte viendra de la droite */
+body .text-content {
+  transform: translateX(50px);
+}
+
+/* Par défaut, l'image viendra de la gauche */
+body .image-content {
+  transform: translateX(-50px);
+}
+
+body .box:nth-of-type(even) .text-content {
+  transform: translateX(-50px);
+}
+
+body .box:nth-of-type(even) .image-content {
+  transform: translateX(50px);
+}
+
+/* Afficher le texte et l'image quand la classe 'show' est ajoutée */
+body .box.show .text-content,
+body .box.show .image-content {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Style.css */
